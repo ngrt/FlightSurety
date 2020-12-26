@@ -90,7 +90,7 @@ contract FlightSuretyData {
     }
 
     function registerAirline(address airlineToAdd, address airlineCalling)
-    isOperational
+    requireIsOperational
     callerAuthorized
     isAirlineAccepted(airlineCalling)
     hasAirlineMadeDeposit(airlineCalling) external {
@@ -136,14 +136,14 @@ contract FlightSuretyData {
         return airlinesRegistered[airline].registered && airlinesRegistered[airline].fund >= REGISTRATION_FEE;
     }
 
-    function buy(bytes32 key, address passenger) isOperational callerAuthorized external payable {
+    function buy(bytes32 key, address passenger) requireIsOperational callerAuthorized external payable {
         require(msg.value <= 1 ether, "Up to 1 eth");
 
         customers[passenger] = Customer(msg.value, 0);
         flights[key].insurees.push(passenger);
     }
 
-    function processFlightStatus(address airline, string flight, uint256 timestamp, uint8 statusCode) isOperational callerAuthorized external {
+    function processFlightStatus(address airline, string flight, uint256 timestamp, uint8 statusCode) requireIsOperational callerAuthorized external {
         bytes32 key = getFlightKey(airline, flight, timestamp);
         flights[key].statusCode = statusCode;
         if (statusCode != 20) {
@@ -155,7 +155,7 @@ contract FlightSuretyData {
         }
     }
 
-    function creditInsurees(address _address) isOperational callerAuthorized internal {
+    function creditInsurees(address _address) requireIsOperational callerAuthorized internal {
         // effects
         uint256 amount = customers[_address].insuranceAmount;
         customers[_address].insuranceAmount = customers[_address].insuranceAmount.sub(amount);
@@ -163,7 +163,7 @@ contract FlightSuretyData {
         customers[_address].credit = customers[_address].credit.add(amount).add(amount / 2);
     }
 
-    function pay(address _address) isOperational entrancyGuard callerAuthorized external payable {
+    function pay(address _address) requireIsOperational entrancyGuard callerAuthorized external payable {
         // checks
         require(_address == tx.origin, "Contracts not allowed");
         // effects
@@ -178,7 +178,7 @@ contract FlightSuretyData {
     }
 
     function fund(address airlineCalling)
-    isOperational
+    requireIsOperational
     isAirlineAccepted(airlineCalling)
     callerAuthorized public payable {
         airlinesRegistered[airlineCalling].fund = airlinesRegistered[airlineCalling].fund.add(msg.value);
@@ -188,7 +188,7 @@ contract FlightSuretyData {
         }
     }
 
-    function registerFlight(string flight, uint8 statusCode, uint256 time, address airline) isOperational callerAuthorized external returns (bytes32) {
+    function registerFlight(string flight, uint8 statusCode, uint256 time, address airline) requireIsOperational callerAuthorized external returns (bytes32) {
         bytes32 key = getFlightKey(airline, flight, time);
         flightKeys.push(key);
         flights[key] = Flight(flight, true, statusCode, time, airline, new address[](0));
