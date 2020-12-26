@@ -11,22 +11,67 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">FlightSurety</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">FlightSurety</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault"
             aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
 
-    <main class="container">
+<main class="container">
 
-        <div id="display-wrapper" class="top-20">
-        </div>
-        <div class="row top-20">
-            <label class="form">Flight</label> <input type="text" id="flight-number"> <btn class="btn btn-primary" id="submit-oracle">Submit to Oracles</btn>
-        </div>
-    </main>
+    <div id="display-wrapper" class="top-20">
+    </div>
+    <div class="row top-20">
+        <label class="form">Airline address</label>
+        <input type="text" id="airline-address">
+        <btn class="btn btn-primary" id="register-airline">Register Airline</btn>
+    </div>
+    <div class="row top-20">
+        <label class="form">Address</label>
+        <input type="text" id="airline-address-fund">
+        <label class="form">Eth</label>
+        <input type="number" id="airline-eth-fund">
+        <btn class="btn btn-primary" id="fund-airline">Fund (only for airlines)</btn>
+    </div>
+    <div class="row top-20">
+        <label class="form">Flight</label>
+        <input type="text" id="flight-number">
+        <label class="form">Airline address</label>
+        <input type="text" id="flight-airline">
+        <label class="form">Date</label>
+        <input type="date" id="flight-date">
+        <btn class="btn btn-primary" id="register-flight">Register Flight</btn>
+    </div>
+    <div class="row top-20">
+        <label class="form">Flights</label>
+        <select name="flights" id="flights-buy-insurance"></select>
+        <label class="form">Amount</label>
+        <input type="number" id="amount-buy-insurance">
+        <label class="form">Passenger</label>
+        <input type="text" id="passenger-buy-insurance">
+        <btn class="btn btn-primary" id="buy-insurance">Buy insurance</btn>
+    </div>
+    <div class="row top-20">
+        <select name="flights" id="flights-fetch-status"></select>
+        <btn class="btn btn-primary" id="submit-oracle">Fetch flight status</btn>
+    </div>
+    <div class="row top-20">
+        <label class="form">Passenger</label>
+        <input type="text" id="credit-passenger">
+        <p id="credit">0 credit</p>
+        <p id="insurance">0 insurance</p>
+        <btn class="btn btn-primary" id="check-credit">Check balance</btn>
+
+    </div>
+    <div class="row top-20">
+        <label class="form">Passenger</label>
+        <input type="text" id="pay-address">
+        <btn class="btn btn-primary" id="pay">Payout</btn>
+    </div>
+</main>
 
 </body>
 
