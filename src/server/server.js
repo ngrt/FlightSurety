@@ -6,7 +6,7 @@ import express from 'express';
 let config = Config['localhost'];
 let web3 = new Web3(new Web3.providers.WebsocketProvider(config.url.replace('http', 'ws')));
 let oracles = [];
-const returnedValues = [10, 20, 30, 40, 50]
+const returnedValues = [0, 10, 20, 30, 40, 50]
 
 web3.eth.getAccounts()
 	.then((accounts) => {

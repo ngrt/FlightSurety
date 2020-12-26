@@ -89,7 +89,7 @@ contract('Flight Surety Tests', async (accounts) => {
 		assert.equal(airlineFetched[1], true, "Airline should be able to register another airline");
 	})
 	
-	it('(airline) after fifth airline registration go on multi-consensus mode', async () => {
+	it('(airline) after fifth airline registration go on multi-consensus mode, airline can be registered but not paticipate', async () => {
 		// ARRANGE
 		let airlineOne = accounts[2];
 		let airlineTwo = accounts[3];
