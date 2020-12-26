@@ -83,6 +83,11 @@ contract FlightSuretyApp {
         emit OracleRequest(index, airline, flight, timestamp);
     }
 
+    function buy(string flightCode, uint256 time, address airline) external payable {
+        bytes32 key = getFlightKey(airline, flightCode, time);
+        flightSuretyData.buy.value(msg.value)(key, msg.sender);
+    }
+
     function buy(bytes32 key) external payable {
         flightSuretyData.buy.value(msg.value)(key, msg.sender);
     }
@@ -197,7 +202,6 @@ contract FlightSuretyApp {
             processFlightStatus(airline, flight, timestamp, statusCode);
         }
     }
-
 
     function getFlightKey(address airline, string flight, uint256 timestamp) pure internal returns (bytes32) {
         return keccak256(abi.encodePacked(airline, flight, timestamp));
