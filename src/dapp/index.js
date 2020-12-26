@@ -34,15 +34,6 @@ import './flightsurety.css';
 			})
 		});
 		
-		// contract.checkAirline('0xD553893eACA6B4Bcebaf9b35B30164dC5dC84723', (err, result) => {
-		// 	console.log(err, result);
-		// });
-		
-		// contract.getPassenger('0x1C91aFF32aa976aa09d0826D88677A4a4f7e933e', (err, result) => {
-		// 	console.log(err, result);
-		// });
-		
-		
 		// User-submitted transaction
 		DOM.elid('submit-oracle').addEventListener('click', () => {
 			let flightKey = DOM.elid('flights-fetch-status').value;

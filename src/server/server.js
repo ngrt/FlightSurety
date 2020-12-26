@@ -39,7 +39,6 @@ web3.eth.getAccounts()
 			oracles.map(oracle => {
 				if (oracle[1].indexOf(index) !== -1) {
 					let randomInt = Math.floor(Math.random() * returnedValues.length)
-					console.log(randomInt)
 					flightSuretyApp.methods
 						.submitOracleResponse(index, airline, flight, timestamp, returnedValues[randomInt])
 						.send({from: oracle[0], gas: 5000000}, (err, response) => {
